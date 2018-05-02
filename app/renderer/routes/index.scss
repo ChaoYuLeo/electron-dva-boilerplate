@@ -1,0 +1,47 @@
+.loadingBlur {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(0.5px);
+  background-color: rgba(230, 247, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleBtn {
+  float: right;
+  padding-top: 9px;
+  position: relative;
+  z-index: 9;
+  i {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #999;
+  }
+  i:last-child {
+    margin-right: 9px;
+  }
+  i:hover {
+    color: #666;
+  }
+}
+
+.controlBtn {
+  float: right;
+  padding-top: 7px;
+  position: relative;
+  z-index: 9;
+  i {
+    font-size: 22px;
+    margin-right: 9px;
+    cursor: pointer;
+    color: #999;
+  }
+  i:hover {
+    color: #666;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "baseUrl": {
+    "hospitalDal": {
+      "dev": "http://localhost:9099/",
+      "prod": "http://product.com:9099/"
+    }
+  },
+  "mode": "dev"
+}

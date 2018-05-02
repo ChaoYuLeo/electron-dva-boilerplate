@@ -1,0 +1,14 @@
+.control {
+  margin-left: 6px;
+  -webkit-app-region: no-drag;
+  i.icon {
+    border: 1px solid #ccc;
+    padding: 3px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 6px;
+    &:active {
+      background-color: #ddd;
+    }
+  }
+}
