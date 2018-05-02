@@ -73,7 +73,7 @@ export default class TopHeader extends Component {
 
     return (
       <div className="drag-header" style={headerStyle}>
-        { process.platform != 'win32' ?
+        { process.platform == 'win32' ?
           <span className={`${styles.titleBtn} no-drag`}>
             {!isConf ? <Icon type="plus-circle" onClick={this.onPlus}/> : null}
             {!isConf ? <Icon type="minus-circle" onClick={this.onMinus} /> : null}
