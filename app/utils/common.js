@@ -1,3 +1,5 @@
+import fs from 'fs'
+
 /**
  * 生成短uid
  *
