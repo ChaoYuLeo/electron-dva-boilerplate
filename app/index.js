@@ -32,10 +32,8 @@ app.start('#root');
 
 if (module.hot) {
   module.hot.accept('./renderer/routes/App', () => {
-    setTimeout(() => {
-      app.router(router); // eslint-disable-line global-require
-      app.start('#root');
-    }, 0);
+    app.router(require('./renderer/router')); // eslint-disable-line global-require
+    app.start('#root');
   });
 }
 
