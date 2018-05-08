@@ -57,7 +57,7 @@ export default function() {
   ipcMain.on('open-conf-window', (event) => {
     const confWindow = wm.get('confWindow')
     if (!confWindow) {
-      throw new Error('"mainWindow" is not defined');
+      throw new Error('"confWindow" is not defined');
     } else {
       confWindow.show()
       confWindow.focus()

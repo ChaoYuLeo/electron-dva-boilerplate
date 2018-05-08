@@ -1,9 +1,8 @@
 import axios from 'axios';
 import hospitalConf from './hospital';
 import { remote } from 'electron'
-import fs from 'fs'
 import qs from 'qs'
-import path from 'path'
+
 
 function HospitalDalApi(methodName, data, type = 'form') {
   const appConf = remote.getGlobal('settingConfig')
@@ -13,20 +12,17 @@ function HospitalDalApi(methodName, data, type = 'form') {
   const hospitalDalInstance = axios.create({
     baseURL: hospitalDal[mode]
   })
-  const conf = hospitalConf[methodName]
-  if (!conf) return ({
-    then(fn) {
-      fn('method dont have')
-    },
-    catch(fn) {
-      fn('method dont have')
-    }
-  })
+  const { err, fakePromise } = checkMethod(hospitalConf, methodName)
+  if (err) return fakePromise
+  return genApiPromise(hospitalDalInstance)
+}
+
+function genApiPromise(instance) {
   let p = null
   if (conf.method == 'get') {
-    p = hospitalDalInstance.get(`${conf.url}?${qs.stringify(data)}`)
+    p = instance.get(`${conf.url}?${qs.stringify(data)}`)
   } else if (conf.method == 'delete') {
-    p = hospitalDalInstance.delete(`${conf.url}?${qs.stringify(data)}`)
+    p = instance.delete(`${conf.url}?${qs.stringify(data)}`)
   } else {
     let options = {
       data: type == 'json' ? data : qs.stringify(data)
@@ -34,10 +30,28 @@ function HospitalDalApi(methodName, data, type = 'form') {
     if (type == 'form') {
       options.headers = { 'content-type': 'application/x-www-form-urlencoded' }
     }
-    p = hospitalDalInstance[conf.method](conf.url, options)
+    p = instance[conf.method](conf.url, options)
   }
   return p
 }
+
+function checkMethod(config, methodName) {
+  const conf = config[methodName]
+  let returnValue = {
+    err: false,
+    fakePromise: null
+  }
+  if (!conf) {
+    returnValue.err = true
+    returnValue.fakePromise = new Promise((resolve, reject) => {
+      reject('methodName error')
+    })
+    return returnValue
+  } else {
+    return returnValue
+  }
+}
+
 
 export default {
   HospitalDalApi
