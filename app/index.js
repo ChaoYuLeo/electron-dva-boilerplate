@@ -36,5 +36,3 @@ if (module.hot) {
     app.start('#root');
   });
 }
-
-export default app._store;

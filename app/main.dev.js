@@ -68,7 +68,7 @@ app.on('activate', function () {
   }
 })
 
-if (process.platform != 'win32') {
+if (process.platform == 'darwin') {
   app.dock.bounce('critical')
 }
 
