@@ -7,7 +7,5 @@ global.confWindowShouldClose = false
 
 global.appFilePath = `file://${__dirname}/app.html`
 
-global.getConf = () => {
-  const config = JSON.parse(fs.readFileSync(global.settingConfPath))
-  return config
-}
+global.settingConfig = null
+

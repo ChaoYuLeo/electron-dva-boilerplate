@@ -6,7 +6,7 @@ import qs from 'qs'
 import path from 'path'
 
 function HospitalDalApi(methodName, data, type = 'form') {
-  const appConf = remote.getGlobal('getConf')()
+  const appConf = remote.getGlobal('settingConfig')
   let mode = appConf.mode
   let hospitalDal = appConf.baseUrl.hospitalDal
   if (!hospitalDal[mode]) return remote.dialog.showErrorBox('配置错误', '无法生成正确的服务实例，请检查配置')

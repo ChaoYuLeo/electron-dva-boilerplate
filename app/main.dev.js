@@ -29,7 +29,6 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
   require('electron-debug')();
-  const path = require('path');
   const p = path.join(__dirname, '..', 'app', 'node_modules') ;
   require('module').globalPaths.push(p);
 }
@@ -81,7 +80,10 @@ app.on('ready', async () => {
   if (!fsExistsSync(global.settingConfPath)) {
     const tempConfPath = `${__dirname}/config/setting.json`
     const tempConfig = JSON.parse(fs.readFileSync(tempConfPath))
+    global.settingConfig = tempConfig
     fs.writeFileSync(global.settingConfPath, JSON.stringify(tempConfig, null, 2))
+  } else {
+    global.settingConfig = JSON.parse(fs.readFileSync(global.settingConfPath))
   }
 
   createLoginWindow(wm)

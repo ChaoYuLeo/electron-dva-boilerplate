@@ -43,12 +43,13 @@ export default function() {
   })
 
   ipcMain.on('get-mode-info', (event) => {
-    event.returnValue = global.getConf()
+    event.returnValue = global.settingConfig
   })
 
   ipcMain.on('save-config', (event, config) => {
     const confWindow = wm.get('confWindow')
     fs.writeFileSync(global.settingConfPath, JSON.stringify(config, null, 2))
+    global.settingConfig = config
     event.sender.send('start-reload-page')
     confWindow.close()
   })
