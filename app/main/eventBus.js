@@ -8,7 +8,6 @@ export default function() {
 
   ipcMain.on('login', (event, user) => {
     if (user.username === 'admin' && user.password === 'admin') {
-      global.mainWindowIsOpen = true
       createMainWindow(wm)
     } else {
       event.sender.send('login-fail')
@@ -49,7 +48,7 @@ export default function() {
 
   ipcMain.on('save-config', (event, config) => {
     const confWindow = wm.get('confWindow')
-    fs.writeFileSync(settingConfPath, JSON.stringify(config, null, 2))
+    fs.writeFileSync(global.settingConfPath, JSON.stringify(config, null, 2))
     event.sender.send('start-reload-page')
     confWindow.close()
   })

@@ -14,5 +14,9 @@ export default function createConfWindow(wm) {
     }
   })
 
+  confWindow.on('closed', () => {
+    wm.close('confWindow')
+  });
+
   return confWindow
 }

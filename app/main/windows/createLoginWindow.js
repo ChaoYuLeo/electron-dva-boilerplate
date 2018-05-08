@@ -16,9 +16,10 @@ export default function createLoginWindow(wm) {
   });
 
   loginWindow.on('closed', () => {
-    const mainWindow = wm.get('mainWindow')
-    if (!mainWindowIsOpen && mainWindow) {
-      mainWindow.close()
+    wm.close('loginWindow')
+    if (!wm.get('mainWindow')) {
+      global.confWindowShouldClose = true
+      wm.close('confWindow')
     }
   });
 

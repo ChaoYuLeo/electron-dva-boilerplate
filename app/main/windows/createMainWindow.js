@@ -10,6 +10,7 @@ export default function createMainWindow(wm) {
 
   mainWindow.on('closed', () => {
     global.confWindowShouldClose = true
+    wm.close('mainWindow')
     wm.close('confWindow')
   });
 

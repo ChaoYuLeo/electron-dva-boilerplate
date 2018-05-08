@@ -37,8 +37,7 @@ export default class WindowManager {
   }
 
   close(name) {
-    this.windows[name] && this.windows[name].close()
+    this.windows[name] && !this.windows[name].isDestroyed() && this.windows[name].close()
     this.windows[name] = null
-    return true
   }
 }

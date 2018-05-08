@@ -20,6 +20,7 @@ export default class Login extends Component {
   componentWillMount() {
     ipcRenderer.on('login-fail', (event) => {
       message.error('用户名或密码错误！')
+      this.setState({loading: false})
     })
   }
 

@@ -13,3 +13,12 @@ export function genShortUID(temp = 'xxxxx'){
   });
   return uuid;
 }
+
+export function fsExistsSync(path) {
+  try{
+    fs.accessSync(path,fs.F_OK);
+  }catch(e){
+    return false;
+  }
+  return true;
+}
