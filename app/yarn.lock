@@ -2,22 +2,3 @@
 # yarn lockfile v1
 
 
-electron-localshortcut@^0.6.1:
-  version "0.6.1"
-  resolved "http://registry.npm.taobao.org/electron-localshortcut/download/electron-localshortcut-0.6.1.tgz#c4e268c38a6e42f40de5618fc906d1ed608f11aa"
-
-electron-window-manager@^1.0.6:
-  version "1.0.6"
-  resolved "http://registry.npm.taobao.org/electron-window-manager/download/electron-window-manager-1.0.6.tgz#106adc66d3a31af6b7e1ead4a2fd39accb8bdd9c"
-  dependencies:
-    electron-localshortcut "^0.6.1"
-    melanke-watchjs "^1.3.1"
-    underscore "^1.8.3"
-
-melanke-watchjs@^1.3.1:
-  version "1.4.3"
-  resolved "http://registry.npm.taobao.org/melanke-watchjs/download/melanke-watchjs-1.4.3.tgz#fbf772259cb6c4829e6ef9dd47d74cfc17cac982"
-
-underscore@^1.8.3:
-  version "1.9.0"
-  resolved "http://registry.npm.taobao.org/underscore/download/underscore-1.9.0.tgz#31dbb314cfcc88f169cd3692d9149d81a00a73e4"

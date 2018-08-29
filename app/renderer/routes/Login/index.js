@@ -50,6 +50,7 @@ export default class Login extends Component {
           </FormItem>
           <div style={{textAlign: 'center'}}>
             <Button loading={loading} type="primary" style={{width: 123}} onClick={this.login}>登录</Button>
+
           </div>
         </Form>
       </div>
